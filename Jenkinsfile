@@ -3,6 +3,9 @@ pipeline{
     tools{
          maven 'M2_HOME'
     }
+    environment {
+        Nexus_url = '198.58.119.40:8081/repository/Ale/'
+    }
     stages{
     stage('maven clean'){
         steps{
@@ -24,7 +27,7 @@ pipeline{
         steps{
             nexusArtifactUploader artifacts: [[artifactId: 'bioMedical', classifier: '',
              file: 'target/bioMedical-0.0.2-SNAPSHOT.jar', type: 'jar']],
-              credentialsId: 'nexusID', groupId: 'qa', nexusUrl: '198.58.119.40:8081/repository/Ale/',
+              credentialsId: 'nexusID', groupId: 'qa', nexusUrl: ${Nexus_url},
                nexusVersion: 'nexus3', protocol: 'http', repository: 'Ale', version: '002'
         }
     }
