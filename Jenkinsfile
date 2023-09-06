@@ -22,7 +22,7 @@ pipeline{
     }
     stage('upload artifact'){
         steps{
-            sh 'curl --upload-file webapp/target/webapp.war -u admin:devops -v http://ec2-52-91-118-64.compute-1.amazonaws.com:8081/repository/war-files-utc/'
+            sh 'curl --upload-file webapp/target/webapp.war -u admin:devops -v http://198.58.119.40:8081/repository/Ale/'
         }
     }
 
